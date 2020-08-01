@@ -13,6 +13,8 @@ export default class Incomerows extends Component {
       Mname: this.props.user.Mname,
       Lname: this.props.user.Lname,
       email: this.props.user.email,
+      date: this.props.user.date,
+      bio: this.props.user.bio,
     };
   }
   Update = () => {
@@ -22,6 +24,8 @@ export default class Incomerows extends Component {
       Mname: this.state.Mname,
       Lname: this.state.Lname,
       email: this.state.email,
+      date: this.state.date,
+      bio: this.state.bio,
     };
     axios
       .post("http://localhost/ReactCrud/update.php", obj)
@@ -73,6 +77,26 @@ export default class Incomerows extends Component {
             className="form-control"
             onChange={(e) => {
               this.setState({ email: e.target.value });
+            }}
+          />
+        </td>
+        <td>
+          <input
+            type="date"
+            value={this.state.date}
+            className="form-control"
+            onChange={(e) => {
+              this.setState({ date: e.target.value });
+            }}
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            value={this.state.bio}
+            className="form-control"
+            onChange={(e) => {
+              this.setState({ bio: e.target.value });
             }}
           />
         </td>

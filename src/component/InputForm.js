@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import { Form, Alert } from "react-bootstrap";
 export default class InputForm extends React.Component {
   constructor() {
     super();
@@ -9,6 +10,8 @@ export default class InputForm extends React.Component {
       MiddleName: "",
       LastName: "",
       email: "",
+      date: [],
+      bio: "",
     };
   }
   OnSubmit = (e) => {
@@ -18,11 +21,21 @@ export default class InputForm extends React.Component {
       middlename: this.state.MiddleName,
       lastname: this.state.LastName,
       email: this.state.email,
+      date: this.state.date,
+      bio: this.state.bio,
     };
     console.log(data);
     axios
       .post("http://localhost/ReactCrud/insert.php", data)
       .then((res) => console.log(res.data));
+    this.setState({
+      FirstName: "",
+      MiddleName: "",
+      LastName: "",
+      email: "",
+      date: [],
+      bio: "",
+    });
   };
   render() {
     return (
@@ -70,7 +83,7 @@ export default class InputForm extends React.Component {
         <div className="form-group">
           <label>Email</label>
           <input
-            type="text"
+            type="email"
             value={this.state.email}
             className="form-control"
             onChange={(e) => {
@@ -80,7 +93,29 @@ export default class InputForm extends React.Component {
             required
           />
         </div>
-
+        <div className="form-group">
+          <label>Date Of birth</label>
+          <input
+            type="date"
+            value={this.state.date}
+            className="form-control"
+            onChange={(e) => {
+              this.setState({ date: e.target.value });
+            }}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Write Your BIO</label>
+          <Form.Control
+            as="textarea"
+            rows="3"
+            value={this.state.bio}
+            onChange={(e) => {
+              this.setState({ bio: e.target.value });
+            }}
+          />
+        </div>
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
