@@ -11,7 +11,7 @@ export default class view extends React.Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:9000/postMessages")
+      .get("http://localhost:9000/user")
       .then((res) => {
         console.log(res.data);
         this.setState({ users: res.data, fil: res.data });

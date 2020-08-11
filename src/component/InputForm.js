@@ -26,7 +26,7 @@ export default class InputForm extends React.Component {
     };
     console.log(data);
     axios
-      .post("http://localhost:9000/postMessages", data)
+      .post("http://localhost:9000/user", data)
       .then((res) => console.log(res.data));
     this.setState({
       FirstName: "",

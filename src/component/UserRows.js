@@ -27,17 +27,14 @@ export default class Incomerows extends Component {
       bio: this.state.bio,
     };
     axios
-      .put(
-        "http://localhost:9000/postMessages/" + this.props.user._id,
-        newRecord
-      )
+      .put("http://localhost:9000/user/" + this.props.user._id, newRecord)
       .then(window.location.reload())
       .catch((err) => console.log(err));
   };
 
   delete = () => {
     axios
-      .delete("http://localhost:9000/postMessages/" + this.props.user._id)
+      .delete("http://localhost:9000/user/" + this.props.user._id)
       .then(window.location.reload())
       .catch((err) => console.log(err));
   };
