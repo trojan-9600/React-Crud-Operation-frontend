@@ -10,9 +10,13 @@ export default class view extends React.Component {
     };
   }
   componentDidMount() {
-    axios.get("http://localhost/ReactCrud/list.php").then((res) => {
-      this.setState({ users: res.data, fil: res.data });
-    });
+    axios
+      .get("http://localhost:9000/postMessages")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({ users: res.data, fil: res.data });
+      })
+      .catch((err) => console.log(err));
   }
 
   userList = (e) => {
@@ -27,6 +31,7 @@ export default class view extends React.Component {
       return <UserRows user={user} key={i} />;
     });
   };
+
   render() {
     return (
       <center>

@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 <View />
               </Route>
               <Route component={InputForm} path="/inputform">
-                <InputForm />
+                <InputForm show="true" />
               </Route>
             </Switch>
           </div>

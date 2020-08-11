@@ -17,16 +17,16 @@ export default class InputForm extends React.Component {
   OnSubmit = (e) => {
     e.preventDefault();
     const data = {
-      firstname: this.state.FirstName,
-      middlename: this.state.MiddleName,
-      lastname: this.state.LastName,
-      email: this.state.email,
+      FirstName: this.state.FirstName,
+      MiddleName: this.state.MiddleName,
+      LastName: this.state.LastName,
+      Email: this.state.email,
       date: this.state.date,
       bio: this.state.bio,
     };
     console.log(data);
     axios
-      .post("http://localhost/ReactCrud/insert.php", data)
+      .post("http://localhost:9000/postMessages", data)
       .then((res) => console.log(res.data));
     this.setState({
       FirstName: "",

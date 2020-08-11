@@ -8,18 +8,17 @@ export default class Incomerows extends Component {
     super(props);
     this.state = {
       redirect: false,
-      id: this.props.user.id,
-      Fname: this.props.user.Fname,
-      Mname: this.props.user.Mname,
-      Lname: this.props.user.Lname,
-      email: this.props.user.email,
+      id: this.props.user._id,
+      Fname: this.props.user.FirstName,
+      Mname: this.props.user.MiddleName,
+      Lname: this.props.user.LastName,
+      email: this.props.user.Email,
       date: this.props.user.date,
       bio: this.props.user.bio,
     };
   }
   Update = () => {
-    const obj = {
-      id: this.state.id,
+    const newRecord = {
       Fname: this.state.Fname,
       Mname: this.state.Mname,
       Lname: this.state.Lname,
@@ -28,14 +27,17 @@ export default class Incomerows extends Component {
       bio: this.state.bio,
     };
     axios
-      .post("http://localhost/ReactCrud/update.php", obj)
+      .put(
+        "http://localhost:9000/postMessages/" + this.props.user._id,
+        newRecord
+      )
       .then(window.location.reload())
       .catch((err) => console.log(err));
   };
 
   delete = () => {
     axios
-      .get("http://localhost/ReactCrud/delete.php?id=" + this.props.user.id)
+      .delete("http://localhost:9000/postMessages/" + this.props.user._id)
       .then(window.location.reload())
       .catch((err) => console.log(err));
   };
